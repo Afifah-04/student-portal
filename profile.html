@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | UITM Student Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <img src="images/logoportal.jpg" alt="UITM Portal Logo" 
+                 class="me-2" style="height: 60px; width: auto;">UITM Portal
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house me-1"></i>Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="profile.html"><i class="bi bi-person me-1"></i>Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="courses.html"><i class="bi bi-journal-text me-1"></i>Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="timetable.html"><i class="bi bi-calendar-week me-1"></i>Timetable</a></li>
+                    <li class="nav-item"><a class="nav-link" href="grades.html"><i class="bi bi-award me-1"></i>Grades</a></li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-dark ms-2" id="themeToggle">
+                            <i class="bi bi-moon-fill"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-danger ms-2" id="logoutBtn">
+                            <i class="bi bi-box-arrow-right me-1"></i>Logout
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Marquee -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span class="marquee-item"><i class="bi bi-person-circle"></i> Welcome to Your Profile</span>
+            <span class="marquee-item"><i class="bi bi-shield-check"></i> Profile Updated: <span id="lastUpdated">February 20, 2025</span></span>
+            <span class="marquee-item"><i class="bi bi-bell"></i> Verify your contact information</span>
+            <span class="marquee-item"><i class="bi bi-cloud-upload"></i> Upload your latest documents</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container py-4 mt-5">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center">
+                    <div class="profile-avatar-container">
+                        <img src="images/myphoto.jpeg" alt="Profile" class="profile-avatar" id="profilePic">
+                        <div class="profile-avatar-overlay"><i class="bi bi-camera-fill text-white fs-4"></i></div>
+                        <input type="file" id="profileUpload" accept="image/*" class="d-none">
+                    </div>
+                    <div class="profile-badges">
+                        <span class="profile-badge bg-success text-white"><i class="bi bi-check-circle"></i> Verified</span>
+                        <span class="profile-badge bg-info text-white"><i class="bi bi-award"></i> Dean's List</span>
+                        <span class="profile-badge bg-warning text-dark"><i class="bi bi-star"></i> Active</span>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h1 class="display-6 mb-2" id="displayName">Afifah Imanina Binti Azhar</h1>
+                            <p class="lead mb-3"><i class="bi bi-mortarboard-fill me-2"></i>Bachelor of Information System Management (Hons.)</p>
+                        </div>
+                        <button class="btn btn-light btn-sm" onclick="printProfile()"><i class="bi bi-printer"></i></button>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="info-item">
+                                <div class="info-icon"><i class="bi bi-person-badge"></i></div>
+                                <div class="info-content">
+                                    <div class="info-label text-white">Student ID</div>
+                                    <div class="info-value text-white" id="studentIdDisplay">2025179485</div>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon"><i class="bi bi-envelope"></i></div>
+                                <div class="info-content">
+                                    <div class="info-label text-white">Email</div>
+                                    <div class="info-value text-white" id="displayEmail">2025179485@student.uitm.edu.my</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-item">
+                                <div class="info-icon"><i class="bi bi-telephone"></i></div>
+                                <div class="info-content">
+                                    <div class="info-label text-white">Phone</div>
+                                    <div class="info-value text-white" id="displayPhone">011-57694035</div>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon"><i class="bi bi-geo-alt"></i></div>
+                                <div class="info-content">
+                                    <div class="info-label text-white">Campus</div>
+                                    <div class="info-value text-white" id="displayCampus">UITM Shah Alam</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="profile-actions mb-4">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal"><i class="bi bi-pencil-square me-1"></i>Edit Profile</button>
+            <button class="btn btn-outline-primary" onclick="viewDocuments()"><i class="bi bi-file-earmark-text me-1"></i>Documents</button>
+            <button class="btn btn-outline-primary" onclick="openPrivacySettings()"><i class="bi bi-shield-check me-1"></i>Privacy</button>
+            <button class="btn btn-outline-primary" onclick="shareProfile()"><i class="bi bi-share me-1"></i>Share</button>
+            <button class="btn btn-outline-primary" onclick="downloadProfile()"><i class="bi bi-download me-1"></i>Export</button>
+            <button class="btn btn-outline-primary" onclick="showQRCode()"><i class="bi bi-qr-code me-1"></i>QR Code</button>
+        </div>
+
+        <!-- Stats in One Line -->
+        <div class="stats-container mb-4">
+            <div class="stat-card"><div class="stat-icon bg-primary bg-opacity-10 text-primary"><i class="bi bi-award"></i></div><div class="stat-value" id="statCGPA">3.52</div><div class="stat-label">Current CGPA</div><small class="text-success">↑ 0.12 from last semester</small></div>
+            <div class="stat-card"><div class="stat-icon bg-info bg-opacity-10 text-info"><i class="bi bi-journal-text"></i></div><div class="stat-value" id="statCourses">8</div><div class="stat-label">Courses This Semester</div><small class="text-muted">22 credits total</small></div>
+            <div class="stat-card"><div class="stat-icon bg-warning bg-opacity-10 text-warning"><i class="bi bi-calendar-check"></i></div><div class="stat-value" id="statAttendance">92%</div><div class="stat-label">Attendance Rate</div><small class="text-warning">5% late this month</small></div>
+            <div class="stat-card"><div class="stat-icon bg-success bg-opacity-10 text-success"><i class="bi bi-check-circle"></i></div><div class="stat-value" id="statCredits">64</div><div class="stat-label">Credits Completed</div><small class="text-success">86% of program</small></div>
+            <div class="stat-card"><div class="stat-icon bg-danger bg-opacity-10 text-danger"><i class="bi bi-clock-history"></i></div><div class="stat-value" id="statHours">128</div><div class="stat-label">Study Hours</div><small class="text-muted">This semester</small></div>
+            <div class="stat-card"><div class="stat-icon bg-purple bg-opacity-10 text-purple"><i class="bi bi-trophy"></i></div><div class="stat-value" id="statRank">15</div><div class="stat-label">Class Rank</div><small class="text-success">Top 20%</small></div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="row mb-4">
+            <!-- Personal Information -->
+            <div class="col-lg-4 mb-4">
+                <div class="card info-card shadow">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-info-circle me-2"></i>Personal Info</h5>
+                        <button class="btn btn-sm btn-outline-primary" onclick="editPersonalInfo()"><i class="bi bi-pencil"></i></button>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-item"><div class="info-icon"><i class="bi bi-calendar"></i></div><div class="info-content"><div class="info-label">Date of Birth</div><div class="info-value" id="displayDob">16 September 2004</div></div></div>
+                        <div class="info-item"><div class="info-icon"><i class="bi bi-gender-ambiguous"></i></div><div class="info-content"><div class="info-label">Gender</div><div class="info-value" id="displayGender">Female</div></div></div>
+                        <div class="info-item"><div class="info-icon"><i class="bi bi-globe"></i></div><div class="info-content"><div class="info-label">Nationality</div><div class="info-value" id="displayNationality">Malaysian</div></div></div>
+                        <div class="info-item"><div class="info-icon"><i class="bi bi-credit-card"></i></div><div class="info-content"><div class="info-label">IC Number</div><div class="info-value" id="displayIC">040916-14-1234</div></div></div>
+                        <div class="info-item"><div class="info-icon"><i class="bi bi-heart"></i></div><div class="info-content"><div class="info-label">Blood Type</div><div class="info-value">O+</div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academic Progress -->
+            <div class="col-lg-4 mb-4">
+                <div class="card info-card shadow">
+                    <div class="card-header"><h5 class="mb-0"><i class="bi bi-graph-up me-2"></i>Academic Progress</h5></div>
+                    <div class="card-body">
+                        <div class="progress-ring mb-4">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle cx="60" cy="60" r="54" fill="none" stroke="#e9ecef" stroke-width="12"/>
+                                <circle cx="60" cy="60" r="54" fill="none" stroke="#004080" stroke-width="12" stroke-linecap="round" stroke-dasharray="339.292" stroke-dashoffset="67.8584" class="progress-ring-circle"/>
+                            </svg>
+                            <div class="progress-ring-text"><div class="progress-ring-value">80%</div><div class="progress-ring-label">Program</div></div>
+                        </div>
+                        <div class="info-item"><div class="info-icon"><i class="bi bi-mortarboard"></i></div><div class="info-content"><div class="info-label">Program</div><div class="info-value" id="displayProgram">CDIM262 - Information System Management</div></div></div>
+                        <div class="info-item"><div class="info-icon"><i class="bi bi-building"></i></div><div class="info-content"><div class="info-label">Faculty</div><div class="info-value" id="displayFaculty">Faculty of Information Management</div></div></div>
+                        <div class="info-item"><div class="info-icon"><i class="bi bi-calendar3"></i></div><div class="info-content"><div class="info-label">Current Semester</div><div class="info-value" id="displaySemester">Semester 4 (Year 2)</div></div></div>
+                        <div class="info-item"><div class="info-icon"><i class="bi bi-clock-history"></i></div><div class="info-content"><div class="info-label">Enrollment Date</div><div class="info-value" id="displayEnrollment">September 2025</div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills & Activities -->
+            <div class="col-lg-4 mb-4">
+                <div class="card info-card shadow">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-star me-2"></i>Skills & Activities</h5>
+                        <button class="btn btn-sm btn-outline-primary" onclick="editSkills()"><i class="bi bi-plus"></i></button>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="mb-3">Technical Skills</h6>
+                        <div class="mb-3">
+                            <span class="skill-tag">Database Management</span><span class="skill-tag">Web Development</span>
+                            <span class="skill-tag">UX Design</span><span class="skill-tag">Project Management</span>
+                            <span class="skill-tag">Data Analysis</span><span class="skill-tag">UI/UX</span>
+                        </div>
+                        <h6 class="mb-3 mt-4">Languages</h6>
+                        <div class="info-item"><div class="info-icon"><i class="bi bi-translate"></i></div><div class="info-content"><div class="info-label">English</div><div class="info-value">Fluent (Professional)</div></div></div>
+                        <div class="info-item"><div class="info-icon"><i class="bi bi-translate"></i></div><div class="info-content"><div class="info-label">Malay</div><div class="info-value">Native</div></div></div>
+                        <div class="info-item"><div class="info-icon"><i class="bi bi-translate"></i></div><div class="info-content"><div class="info-label">Arabic</div><div class="info-value">Basic</div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information & Recent Activity -->
+        <div class="row mb-4">
+            <!-- Contact Information -->
+            <div class="col-lg-8 mb-4">
+                <div class="card info-card shadow">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-telephone me-2"></i>Contact Information</h5>
+                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal"><i class="bi bi-pencil"></i></button>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="contact-item"><div class="contact-icon"><i class="bi bi-envelope"></i></div><div><div class="info-label">Email</div><div class="info-value" id="displayEmail">2025179485@student.uitm.edu.my</div></div></div>
+                                <div class="contact-item"><div class="contact-icon"><i class="bi bi-phone"></i></div><div><div class="info-label">Phone</div><div class="info-value" id="displayPhone">011-57694035</div></div></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="contact-item"><div class="contact-icon"><i class="bi bi-house"></i></div><div><div class="info-label">Address</div><div class="info-value" id="displayAddress">No. 123, Jalan UITM, 40450 Shah Alam, Selangor</div></div></div>
+                                <div class="contact-item"><div class="contact-icon"><i class="bi bi-link"></i></div><div><div class="info-label">LinkedIn</div><div class="info-value"><a href="#" class="text-decoration-none">linkedin.com/in/afifah-imanina</a></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="col-lg-4 mb-4">
+                <div class="card info-card shadow">
+                    <div class="card-header"><h5 class="mb-0"><i class="bi bi-clock-history me-2"></i>Recent Activity</h5></div>
+                    <div class="card-body">
+                        <div class="activity-timeline">
+                            <div class="activity-item"><div class="activity-time">Today, 10:30 AM</div><div class="activity-text">Updated profile picture</div></div>
+                            <div class="activity-item"><div class="activity-time">Yesterday, 3:15 PM</div><div class="activity-text">Completed assignment for IMS566</div></div>
+                            <div class="activity-item"><div class="activity-time">Feb 18, 2025</div><div class="activity-text">Viewed grade report</div></div>
+                            <div class="activity-item"><div class="activity-time">Feb 15, 2025</div><div class="activity-text">Updated contact information</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency Contact -->
+        <div class="card info-card shadow mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="bi bi-telephone-plus me-2 text-danger"></i>Emergency Contact</h5>
+                <button class="btn btn-sm btn-outline-danger" onclick="editEmergencyContact()"><i class="bi bi-pencil"></i></button>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4"><div class="contact-item"><div class="contact-icon bg-danger bg-opacity-10 text-danger"><i class="bi bi-person"></i></div><div><div class="info-label">Contact Person</div><div class="info-value">Azhar Bin Ismail</div></div></div></div>
+                    <div class="col-md-4"><div class="contact-item"><div class="contact-icon bg-danger bg-opacity-10 text-danger"><i class="bi bi-telephone"></i></div><div><div class="info-label">Phone</div><div class="info-value">012-3456789</div></div></div></div>
+                    <div class="col-md-4"><div class="contact-item"><div class="contact-icon bg-danger bg-opacity-10 text-danger"><i class="bi bi-people"></i></div><div><div class="info-label">Relationship</div><div class="info-value">Father</div></div></div></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title"><i class="bi bi-pencil-square me-2"></i>Edit Profile</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="profileForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3"><label class="form-label">Full Name</label><input type="text" class="form-control" id="editName" value="Afifah Imanina Binti Azhar"></div>
+                            <div class="col-md-6 mb-3"><label class="form-label">Email Address</label><input type="email" class="form-control" id="editEmail" value="2023123456@student.uitm.edu.my"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3"><label class="form-label">Phone Number</label><input type="tel" class="form-control" id="editPhone" value="011-57694035"></div>
+                            <div class="col-md-6 mb-3"><label class="form-label">Date of Birth</label><input type="date" class="form-control" id="editDob" value="2004-09-16"></div>
+                        </div>
+                        <div class="mb-3"><label class="form-label">Address</label><textarea class="form-control" id="editAddress" rows="3">No. 123, Jalan UITM, 40450 Shah Alam, Selangor</textarea></div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3"><label class="form-label">LinkedIn Profile</label><input type="url" class="form-control" id="editLinkedIn" value="https://linkedin.com/in/afifah-imanina"></div>
+                            <div class="col-md-6 mb-3"><label class="form-label">Emergency Contact</label><input type="text" class="form-control" id="editEmergencyContact" value="012-3456789"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveProfileBtn">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QR Code Modal -->
+    <div class="modal fade" id="qrCodeModal" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title"><i class="bi bi-qr-code me-2"></i>Profile QR Code</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div id="qrCodeContainer" class="mb-3">
+                        <div class="bg-light p-4 rounded d-inline-block">
+                            <div class="text-muted mb-2">QR Code Preview</div>
+                            <div class="text-primary fs-1"><i class="bi bi-qr-code"></i></div>
+                        </div>
+                    </div>
+                    <p class="text-muted small">Scan this QR code to view profile</p>
+                    <button class="btn btn-outline-primary btn-sm" onclick="downloadQRCode()"><i class="bi bi-download me-1"></i>Download QR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer with Social Links -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <!-- Quick Links -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="mb-3">
+                        <i class="bi bi-mortarboard-fill me-2"></i>UITM Portal
+                    </h5>
+                    <p class="text-light opacity-75 small">Your gateway to academic excellence and student services.</p>
+                    <div class="mt-3">
+                        <a href="index.html" class="text-white text-decoration-none d-block mb-2">
+                            <i class="bi bi-house me-2"></i>Dashboard
+                        </a>
+                        <a href="profile.html" class="text-white text-decoration-none d-block mb-2">
+                            <i class="bi bi-person me-2"></i>Profile
+                        </a>
+                        <a href="courses.html" class="text-white text-decoration-none d-block mb-2">
+                            <i class="bi bi-journal-text me-2"></i>Courses
+                        </a>
+                        <a href="timetable.html" class="text-white text-decoration-none d-block mb-2">
+                            <i class="bi bi-calendar-week me-2"></i>Timetable
+                        </a>
+                        <a href="grades.html" class="text-white text-decoration-none d-block mb-2">
+                            <i class="bi bi-award me-2"></i>Grades
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Resources -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="mb-3">
+                        <i class="bi bi-link-45deg me-2"></i>Resources
+                    </h5>
+                    <div class="d-flex flex-column">
+                        <a href="https://uitm.edu.my" target="_blank" class="text-white text-decoration-none mb-2">
+                            <i class="bi bi-globe me-2"></i>Official Website
+                        </a>
+                        <a href="https://student.uitm.edu.my" target="_blank" class="text-white text-decoration-none mb-2">
+                            <i class="bi bi-laptop me-2"></i>Student Portal
+                        </a>
+                        <a href="https://library.uitm.edu.my" target="_blank" class="text-white text-decoration-none mb-2">
+                            <i class="bi bi-book me-2"></i>Digital Library
+                        </a>
+                        <a href="https://elearning.uitm.edu.my" target="_blank" class="text-white text-decoration-none mb-2">
+                            <i class="bi bi-display me-2"></i>e-Learning
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="mb-3">
+                        <i class="bi bi-telephone me-2"></i>Contact
+                    </h5>
+                    <div class="d-flex flex-column">
+                        <div class="mb-2">
+                            <i class="bi bi-envelope me-2"></i>
+                            <span class="small">student@uitm.edu.my</span>
+                        </div>
+                        <div class="mb-2">
+                            <i class="bi bi-phone me-2"></i>
+                            <span class="small">+603-5544 2000</span>
+                        </div>
+                        <div class="mb-2">
+                            <i class="bi bi-geo-alt me-2"></i>
+                            <span class="small">40450 Shah Alam, Selangor</span>
+                        </div>
+                        <div class="mb-2">
+                            <i class="bi bi-clock me-2"></i>
+                            <span class="small">Mon-Fri: 8:00 AM - 5:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="mb-3">
+                        <i class="bi bi-share me-2"></i>Connect With Us
+                    </h5>
+                    <div class="d-flex flex-wrap gap-3 mb-3">
+                        <a href="https://facebook.com/uitmofficial" target="_blank" class="social-icon facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com/uitmofficial" target="_blank" class="social-icon twitter">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="https://instagram.com/uitmofficial" target="_blank" class="social-icon instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://youtube.com/uitmofficial" target="_blank" class="social-icon youtube">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                        <a href="https://linkedin.com/school/universiti-teknologi-mara" target="_blank" class="social-icon linkedin">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="https://tiktok.com/@uitmofficial" target="_blank" class="social-icon tiktok">
+                            <i class="bi bi-tiktok"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Newsletter -->
+                    <div class="mt-4">
+                        <h6 class="mb-2">Stay Updated</h6>
+                        <div class="input-group input-group-sm">
+                            <input type="email" class="form-control" placeholder="Your email" aria-label="Email">
+                            <button class="btn btn-primary" type="button">
+                                <i class="bi bi-send"></i>
+                            </button>
+                        </div>
+                        <small class="text-light opacity-75 d-block mt-2">Subscribe for announcements</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <hr class="bg-light opacity-25 my-4">
+
+            <!-- Bottom Row -->
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">© 2025 Universiti Teknologi MARA (UITM). All rights reserved.</p>
+                    <small class="text-light opacity-75">
+                        <i class="bi bi-shield-check me-1"></i>Grades are official and certified
+                    </small>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex justify-content-md-end gap-3">
+                        <a href="#" class="text-white text-decoration-none small">Privacy Policy</a>
+                        <a href="#" class="text-white text-decoration-none small">Terms of Service</a>
+                        <a href="#" class="text-white text-decoration-none small">Cookie Policy</a>
+                        <a href="#" class="text-white text-decoration-none small">Accessibility</a>
+                    </div>
+                    <small class="text-light opacity-75 d-block mt-2">
+                        Version 2.1.4 | Last updated: February 20, 2025
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
