@@ -1,0 +1,1330 @@
+/* ===================== GLOBAL STYLES ===================== */
+:root {
+  --primary: #004080;
+  --primary-dark: #002855;
+  --primary-light: #e3f2fd;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --info: #17a2b8;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --bs-body-bg: #ffffff;
+  --bs-body-color: #212529;
+  --text-light: #f8f9fa;
+  --text-dark: #212529;
+  --text-muted: #212529;
+  --card-bg: #ffffff;
+  --card-border: rgba(0,0,0,0.125);
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --chart-text: #212529;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  padding-top: 56px; /* Account for fixed navbar */
+}
+
+/* ===================== NAVIGATION ===================== */
+.navbar {
+  box-shadow: 0 2px 10px var(--shadow-color);
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(10px);
+  z-index: 1030;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: var(--primary) !important;
+  font-size: 1.1rem;
+}
+
+.nav-link {
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  color: var(--bs-body-color) !important;
+  font-size: 0.95rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: var(--primary);
+  color: white !important;
+}
+
+.theme-toggle {
+  border: none;
+  background: transparent;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  color: var(--bs-body-color);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background: var(--primary-light);
+}
+
+/* Fix for navigation */
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+/* Ensure navbar works on mobile */
+@media (max-width: 992px) {
+    .navbar-collapse {
+        background: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-top: 0.5rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .navbar-nav .nav-item {
+        margin-bottom: 0.5rem;
+    }
+    
+    .navbar-nav .btn {
+        margin-top: 0.5rem;
+        margin-left: 0 !important;
+    }
+}
+/* ===================== MARQUEE ===================== */
+.marquee-container {
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 0.5rem 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  font-size: 0.9rem;
+  margin-top: 56px;
+}
+
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 25s linear infinite;
+  padding-left: 100%;
+}
+
+.marquee-item {
+  display: inline-block;
+  padding: 0 1.5rem;
+  font-weight: 500;
+}
+
+.marquee-item i {
+  margin-right: 0.5rem;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ===================== CENTERED CONTENT ===================== */
+main.container, 
+main.container-fluid.dashboard-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  margin-top: 1rem;
+}
+
+/* ===================== HEADER FOR ALL PAGES ===================== */
+.page-header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-header h1 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.page-header p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0;
+}
+
+/* ===================== STATS IN ONE LINE ===================== */
+.stats-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-light) transparent;
+}
+
+.stats-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.stats-container::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.stats-container::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 3px;
+}
+
+.stats-container::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+.stat-card {
+  min-width: 180px;
+  flex: 0 0 auto;
+  background: var(--card-bg);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid var(--card-border);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px var(--shadow-color);
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--info);
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.75rem;
+  font-size: 1.25rem;
+}
+
+/* ===================== CHARTS - FIXED ===================== */
+.chart-container {
+  position: relative;
+  height: 250px !important;
+  width: 100% !important;
+  margin: 0 auto;
+}
+
+.chart-container canvas {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ===================== ANNOUNCEMENT CARDS ===================== */
+.announcement-card {
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.announcement-important {
+  border-left: 4px solid var(--danger);
+  background: rgba(220, 53, 69, 0.05);
+}
+
+.announcement-info {
+  border-left: 4px solid var(--info);
+  background: rgba(23, 162, 184, 0.05);
+}
+
+.announcement-warning {
+  border-left: 4px solid var(--warning);
+  background: rgba(255, 193, 7, 0.05);
+}
+
+/* ===================== COURSE BADGES - FIXED ===================== */
+.course-badge {
+  padding: 0.4rem 0.9rem;
+  border-radius: 50rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+  margin: 0.125rem;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.bg-course-1 { background: linear-gradient(135deg, #667eea, #764ba2); color: white !important; }
+.bg-course-2 { background: linear-gradient(135deg, #f093fb, #f5576c); color: white !important; }
+.bg-course-3 { background: linear-gradient(135deg, #4facfe, #00f2fe); color: white !important; }
+.bg-course-4 { background: linear-gradient(135deg, #43e97b, #38f9d7); color: white !important; }
+.bg-course-5 { background: linear-gradient(135deg, #fa709a, #fee140); color: #212529 !important; }
+.bg-course-6 { background: linear-gradient(135deg, #a8edea, #fed6e3); color: #212529 !important; }
+.bg-course-7 { background: linear-gradient(135deg, #d299c2, #fef9d7); color: #212529 !important; }
+.bg-course-8 { background: linear-gradient(135deg, #89f7fe, #66a6ff); color: white !important; }
+
+/* ===================== GRADE BADGES - IMPROVED ===================== */
+.grade-badge {
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  display: inline-block;
+  font-size: 0.9rem;
+  min-width: 55px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  text-transform: uppercase;
+  border: none;
+}
+
+.grade-A { 
+  background: linear-gradient(135deg, #4CAF50, #2E7D32); 
+  color: white !important; 
+}
+.grade-A- { 
+  background: linear-gradient(135deg, #8BC34A, #689F38); 
+  color: white !important; 
+}
+.grade-B+ { 
+  background: linear-gradient(135deg, #FFC107, #FF9800); 
+  color: #212529 !important; 
+}
+.grade-B { 
+  background: linear-gradient(135deg, #FFB74D, #FF9800); 
+  color: #212529 !important; 
+}
+.grade-C+ { 
+  background: linear-gradient(135deg, #FF9800, #F57C00); 
+  color: white !important; 
+}
+.grade-C { 
+  background: linear-gradient(135deg, #FF7043, #F4511E); 
+  color: white !important; 
+}
+.grade-D { 
+  background: linear-gradient(135deg, #9E9E9E, #616161); 
+  color: white !important; 
+}
+.grade-F { 
+  background: linear-gradient(135deg, #F44336, #C62828); 
+  color: white !important; 
+}
+
+/* ===================== TIMETABLE COLORS ===================== */
+/* Add to style.css */
+.timetable-day {
+  background: var(--card-bg);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--card-border);
+  transition: all 0.3s ease;
+}
+
+.timetable-day:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.timetable-class {
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid;
+  transition: all 0.3s ease;
+}
+
+.timetable-class.lecture {
+  border-left-color: var(--primary);
+  background: linear-gradient(135deg, rgba(0, 64, 128, 0.05), rgba(0, 64, 128, 0.1));
+}
+
+.timetable-class.lab {
+  border-left-color: var(--success);
+  background: linear-gradient(135deg, rgba(40, 167, 69, 0.05), rgba(40, 167, 69, 0.1));
+}
+
+.timetable-class.tutorial {
+  border-left-color: var(--info);
+  background: linear-gradient(135deg, rgba(23, 162, 184, 0.05), rgba(23, 162, 184, 0.1));
+}
+
+.timetable-class.consultation {
+  border-left-color: var(--warning);
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.05), rgba(255, 193, 7, 0.1));
+}
+
+/* Current class animation */
+@keyframes pulse-highlight {
+  0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 193, 7, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+}
+
+.timetable-class.current {
+  animation: pulse-highlight 2s infinite;
+  border-left-color: var(--warning) !important;
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 193, 7, 0.2)) !important;
+}
+
+/* Week navigation buttons */
+.btn-group .btn.active {
+  background-color: var(--primary) !important;
+  color: white !important;
+  border-color: var(--primary) !important;
+}
+
+/* Timetable week controls mobile fixes */
+.week-controls {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.week-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    justify-content: center;
+}
+
+.week-buttons .btn {
+    flex: 1;
+    min-width: 80px;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.week-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .week-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .week-controls h5 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .week-buttons {
+        order: 2;
+        margin-bottom: 1rem;
+    }
+    
+    .week-actions {
+        order: 3;
+    }
+}
+
+@media (max-width: 576px) {
+    .week-buttons .btn {
+        min-width: 70px;
+        font-size: 0.75rem;
+    }
+    
+    .week-actions .btn {
+        flex: 1;
+        min-width: 120px;
+    }
+}
+/* Responsive timetable grid */
+@media (max-width: 768px) {
+  .timetable-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .timetable-day {
+    padding: 1rem;
+  }
+}
+
+/* Print styles specific to timetable */
+@media print {
+  .timetable-day {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  .timetable-class {
+    border: 1px solid #ddd !important;
+    background: white !important;
+  }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 4px 12px rgba(0, 64, 128, 0.25); }
+  50% { box-shadow: 0 4px 20px rgba(0, 64, 128, 0.4); }
+  100% { box-shadow: 0 4px 12px rgba(0, 64, 128, 0.25); }
+}
+
+.class-time {
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.class-info {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ===================== GRADES PAGE COLORS ===================== */
+.gpa-highlight {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  border: 2px solid var(--primary);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.gpa-display {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--primary);
+  text-align: center;
+  margin: 0.5rem 0;
+  line-height: 1;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.gpa-label {
+  color: var(--text-muted);
+  font-size: 1rem;
+  text-align: center;
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+/* Colorful table styles */
+.grades-table tbody tr {
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.grades-table tbody tr:hover {
+    transform: translateX(5px);
+    background-color: rgba(0, 64, 128, 0.05) !important;
+    border-left-color: var(--primary);
+}
+
+/* Row colors based on grade */
+.grade-row-A { background: linear-gradient(90deg, rgba(76, 175, 80, 0.05), rgba(76, 175, 80, 0.02)) !important; }
+.grade-row-A- { background: linear-gradient(90deg, rgba(139, 195, 74, 0.05), rgba(139, 195, 74, 0.02)) !important; }
+.grade-row-B { background: linear-gradient(90deg, rgba(255, 193, 7, 0.05), rgba(255, 193, 7, 0.02)) !important; }
+.grade-row-C { background: linear-gradient(90deg, rgba(255, 152, 0, 0.05), rgba(255, 152, 0, 0.02)) !important; }
+
+/* Header gradient */
+.table-dark {
+    background: linear-gradient(135deg, #004080, #002855) !important;
+    color: white !important;
+}
+
+/* Footer styling */
+.table-secondary {
+    background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+.table-info {
+    background: linear-gradient(90deg, rgba(23, 162, 184, 0.1), rgba(23, 162, 184, 0.05)) !important;
+}
+
+/* Grade badge enhancements */
+.grade-badge {
+    padding: 0.4rem 0.9rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    display: inline-block;
+    font-size: 0.9rem;
+    min-width: 55px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    text-transform: uppercase;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.grade-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Dark mode adjustments */
+[data-bs-theme="dark"] .grades-table tbody tr:hover {
+    background-color: rgba(0, 64, 128, 0.1) !important;
+}
+
+[data-bs-theme="dark"] .table-dark {
+    background: linear-gradient(135deg, #002855, #001a36) !important;
+}
+
+[data-bs-theme="dark"] .table-secondary {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-bs-theme="dark"] .table-info {
+    background: linear-gradient(90deg, rgba(23, 162, 184, 0.15), rgba(23, 162, 184, 0.1)) !important;
+}
+/* ===================== CARDS & LAYOUT ===================== */
+.card {
+  border: 1px solid var(--card-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+  background: var(--card-bg);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.card-header {
+  background: transparent;
+  border-bottom: 1px solid var(--card-border);
+  font-weight: 600;
+  padding: 1rem 1.25rem;
+  color: var(--bs-body-color);
+  font-size: 1.1rem;
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+/* ===================== BUTTONS ===================== */
+.btn {
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+/* ===================== DARK MODE ===================== */
+[data-bs-theme="dark"] {
+  --bs-body-bg: #121212;
+  --bs-body-color: #f8f9fa;
+  --text-muted: #e0e0e0;
+  --card-bg: #1e1e1e;
+  --card-border: #2d2d2d;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --chart-text: #f8f9fa;
+  
+  .navbar {
+    background: rgba(25, 25, 25, 0.98) !important;
+  }
+  
+  .card {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+  }
+  
+  .card-header {
+    border-color: var(--card-border);
+    color: var(--bs-body-color);
+  }
+  
+  .table {
+    --bs-table-bg: transparent;
+    --bs-table-color: var(--bs-body-color);
+    --bs-table-border-color: var(--card-border);
+  }
+  
+  .table thead th {
+    background: var(--primary-dark);
+  }
+  
+  .table tbody td {
+    color: var(--bs-body-color);
+    border-color: var(--card-border);
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: rgba(0, 64, 128, 0.15);
+  }
+  
+  .page-header {
+    background: linear-gradient(135deg, var(--primary-dark), #001a36);
+  }
+  
+  .stat-card {
+    background: #2d2d2d;
+    border-color: #3d3d3d;
+  }
+  
+  .stats-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 64, 128, 0.5);
+  }
+  
+  /* Dark mode for grade badges */
+  .grade-A { background: linear-gradient(135deg, #2E7D32, #1B5E20); }
+  .grade-A- { background: linear-gradient(135deg, #689F38, #33691E); }
+  .grade-B+ { background: linear-gradient(135deg, #FF9800, #EF6C00); color: #f8f9fa !important; }
+  .grade-B { background: linear-gradient(135deg, #F57C00, #E65100); color: #f8f9fa !important; }
+  .grade-C+ { background: linear-gradient(135deg, #F57C00, #E65100); }
+  .grade-C { background: linear-gradient(135deg, #F4511E, #BF360C); }
+  .grade-D { background: linear-gradient(135deg, #616161, #424242); }
+  .grade-F { background: linear-gradient(135deg, #C62828, #B71C1C); }
+  
+  /* Dark mode for GPA highlight */
+  .gpa-highlight {
+    background: linear-gradient(135deg, rgba(0, 64, 128, 0.15), rgba(0, 40, 85, 0.15));
+    border-color: var(--primary);
+  }
+  
+  /* Dark mode for timetable */
+  .timetable-class.lecture {
+    background: linear-gradient(135deg, rgba(0, 64, 128, 0.1), rgba(0, 64, 128, 0.15));
+  }
+  
+  .timetable-class.lab {
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.1), rgba(40, 167, 69, 0.15));
+  }
+  
+  .timetable-class.tutorial {
+    background: linear-gradient(135deg, rgba(23, 162, 184, 0.1), rgba(23, 162, 184, 0.15));
+  }
+  
+  .timetable-class.consultation {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 193, 7, 0.15));
+  }
+  
+  /* Dark mode for course badges */
+  .bg-course-5,
+  .bg-course-6,
+  .bg-course-7 {
+    color: #f8f9fa !important;
+  }
+  
+  /* Dark mode for announcements */
+  .announcement-important {
+    background: rgba(220, 53, 69, 0.1);
+  }
+  
+  .announcement-info {
+    background: rgba(23, 162, 184, 0.1);
+  }
+  
+  .announcement-warning {
+    background: rgba(255, 193, 7, 0.1);
+  }
+  
+  /* Ensure chart containers work in dark mode */
+  .chart-container {
+    background: transparent !important;
+  }
+  
+  /* Fix for text color in dark mode */
+  .text-muted {
+    color: var(--text-muted) !important;
+  }
+}
+
+/* ===================== MOBILE RESPONSIVENESS ===================== */
+@media (max-width: 768px) {
+  /* Stats container mobile */
+  .stats-container {
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .stat-card {
+    min-width: 150px;
+    padding: 1rem;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+  }
+  
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+  
+  /* Charts */
+  .chart-container {
+    height: 220px !important;
+  }
+  
+  /* GPA display */
+  .gpa-display {
+    font-size: 2.5rem;
+  }
+  
+  .gpa-highlight {
+    padding: 1rem;
+  }
+  
+  /* Course badges */
+  .course-badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+  }
+  
+  /* Grade badges */
+  .grade-badge {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.7rem;
+    min-width: 50px;
+  }
+  
+  /* Marquee */
+  .marquee-container {
+    font-size: 0.8rem;
+  }
+  
+  .marquee-item {
+    padding: 0 1rem;
+  }
+}
+
+/* ===================== UTILITIES ===================== */
+.shadow-sm { box-shadow: 0 2px 6px var(--shadow-color) !important; }
+.shadow { box-shadow: 0 4px 12px var(--shadow-color) !important; }
+.shadow-lg { box-shadow: 0 8px 24px var(--shadow-color) !important; }
+
+.rounded-xl { border-radius: 0.75rem !important; }
+.rounded-xxl { border-radius: 1rem !important; }
+
+/* Fix for text color */
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* Force black text in light mode for better readability */
+[data-bs-theme="light"] {
+  .card,
+  .card-header,
+  .card-body,
+  .table,
+  .table td,
+  .table th,
+  .list-group-item,
+  .form-control,
+  .form-label,
+  small,
+  .text-muted {
+    color: var(--bs-body-color) !important;
+  }
+}
+
+/* Loading indicator for charts */
+.chart-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ===================== PROFILE PAGE STYLES ===================== */
+
+/* Profile Header */
+.profile-header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
+}
+
+/* Profile Avatar */
+.profile-avatar-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.profile-avatar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.profile-avatar-container:hover .profile-avatar-overlay {
+    opacity: 1;
+}
+
+.profile-avatar-container:hover .profile-avatar {
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Profile Badges */
+.profile-badges {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.profile-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* Profile Actions */
+.profile-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.profile-actions .btn {
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.profile-actions .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border: none;
+}
+
+.profile-actions .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 64, 128, 0.3);
+}
+
+.profile-actions .btn-outline-primary:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Info Card */
+.info-card {
+    border: none;
+    border-radius: 0.75rem;
+    background: var(--card-bg);
+    transition: all 0.3s ease;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Info Item */
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.info-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    flex-shrink: 0;
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.info-value {
+    font-weight: 600;
+    color: var(--bs-body-color);
+}
+
+/* Progress Ring */
+.progress-ring {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.progress-ring-circle {
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+.progress-ring-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.progress-ring-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.progress-ring-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Activity Timeline */
+.activity-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.activity-timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-light);
+}
+
+.activity-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.activity-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.activity-item::before {
+    content: '';
+    position: absolute;
+    left: -2.2rem;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 3px solid var(--card-bg);
+}
+
+.activity-time {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.activity-text {
+    font-weight: 500;
+    color: var(--bs-body-color);
+}
+
+/* Skill Tags */
+.skill-tag {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    margin: 0.25rem;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Contact Items */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+/* Dark Mode Profile Adjustments */
+[data-bs-theme="dark"] .info-card::before {
+    background: linear-gradient(90deg, var(--primary), #001a36);
+}
+
+[data-bs-theme="dark"] .profile-avatar {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-bs-theme="dark"] .skill-tag {
+    background: rgba(0, 64, 128, 0.2);
+}
+
+[data-bs-theme="dark"] .skill-tag:hover {
+    background: var(--primary);
+}
+
+/* Profile Animation */
+@keyframes countUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.stat-card {
+    animation: countUp 0.6s ease-out;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(4) { animation-delay: 0.4s; }
+.stat-card:nth-child(5) { animation-delay: 0.5s; }
+.stat-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Responsive Profile */
+@media (max-width: 768px) {
+    .profile-avatar-container {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .profile-header {
+        padding: 1.5rem;
+    }
+    
+    .profile-badges {
+        justify-content: flex-start;
+    }
+    
+    .progress-ring {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .progress-ring-value {
+        font-size: 1.5rem;
+    }
+    
+    .profile-actions {
+        justify-content: center;
+    }
+    
+    .profile-actions .btn {
+        flex: 1;
+        min-width: 140px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-avatar-container {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .info-item {
+        flex-direction: column;
+    }
+    
+    .info-icon {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .contact-icon {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Print Styles for Profile */
+@media print {
+    .navbar, .marquee-container, .profile-actions, .btn,
+    .modal, .toast-container, footer {
+        display: none !important;
+    }
+    
+    body {
+        padding-top: 0 !important;
+        background: white !important;
+        color: black !important;
+    }
+    
+    .card {
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+    }
+    
+    .profile-header {
+        background: linear-gradient(135deg, #004080, #002855) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    .stat-card {
+        border: 1px solid #ddd !important;
+    }
+}
+
+/* ===================== TIMETABLE HEADER ===================== */
+.timetable-header-card {
+    background-color: #002855 !important;
+    border: none !important;
+    color: white !important;
+}
+
+.timetable-header-card .lead,
+.timetable-header-card h5,
+.timetable-header-card small {
+    opacity: 0.9;
+}
+
+.timetable-header-card h1 {
+    color: white !important;
+}
+
+/* Dark mode support */
+[data-bs-theme="dark"] .timetable-header-card {
+    background-color: #001a36 !important;
+}
